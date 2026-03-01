@@ -39,37 +39,20 @@
         .tab-content.active { display: flex; }
 
         /* ===== 左パネル（常時表示）===== */
-        .left-panel { flex: 0 0 250px; display: flex; flex-direction: column; padding: 10px; gap: 8px; }
+        .left-panel { flex: 0 0 250px; display: flex; flex-direction: column; gap: 10px; }
 
-        /* AT / DF / G 切替 */
-        .section-toggle { display: flex; gap: 5px; }
-        .sec-btn {
-            flex: 1; padding: 9px 0; border-radius: 8px;
-            font-size: 16px; font-weight: 900; letter-spacing: 1px;
-            background: #eee; color: #aaa;
-        }
-        .sec-btn.at-on  { background: var(--orange); color: #fff; box-shadow: 0 3px 0 #c65300; }
-        .sec-btn.df-on  { background: #0277bd;        color: #fff; box-shadow: 0 3px 0 #01579b; }
-        .sec-btn.g-on   { background: #388e3c;        color: #fff; box-shadow: 0 3px 0 #1b5e20; }
-
-        /* 選手追加フォーム */
-        .add-member-form { display: flex; gap: 5px; }
-        .add-member-form input {
-            flex-grow: 1; padding: 7px; border-radius: 6px;
-            border: 1px solid #aaa; font-size: 13px; font-weight: bold;
-        }
-        .add-member-form button {
-            padding: 7px 10px; background: var(--navy-light);
-            color: #fff; border-radius: 6px; font-weight: bold; font-size: 13px;
-        }
+        /* 選手追加フォーム（1on1と同一）*/
+        .add-member-form { display: flex; gap: 5px; background: var(--panel-bg); padding: 10px; border-radius: 12px; }
+        .add-member-form input { flex-grow: 1; padding: 8px; border-radius: 6px; border: 1px solid #aaa; font-size: 14px; }
+        .add-member-form button { padding: 8px 12px; background: var(--navy-light); color: #fff; border-radius: 6px; font-weight: bold; cursor: pointer; }
 
         /* セット数 */
         .set-row {
             display: flex; align-items: center; justify-content: center;
-            gap: 8px; background: #f5f5f5; border-radius: 8px; padding: 6px 10px;
+            gap: 8px; background: var(--panel-bg); border-radius: 12px; padding: 8px 12px;
         }
         .set-row label { font-size: 13px; font-weight: 800; color: #888; }
-        .set-counter { display: flex; align-items: center; gap: 6px; }
+        .set-counter { display: flex; align-items: center; gap: 8px; }
         .set-btn {
             width: 32px; height: 32px; border-radius: 50%;
             background: var(--navy-light); color: #fff;
@@ -77,31 +60,40 @@
             display: flex; align-items: center; justify-content: center;
         }
         .set-btn:active { background: var(--navy); transform: scale(0.9); }
-        #setDisplay {
-            font-size: 22px; font-weight: 900; color: var(--navy);
-            min-width: 32px; text-align: center;
-        }
+        #setDisplay { font-size: 22px; font-weight: 900; color: var(--navy); min-width: 32px; text-align: center; }
 
-        /* 選手グリッド */
-        .shooter-grid-container { flex: 1; overflow-y: auto; padding-right: 3px; }
-        .shooter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+        /* 選手セクション（1on1と同一）*/
+        .player-section { padding: 10px; display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+        .player-section h4 { margin: 0 0 8px 0; text-align: center; font-size: 15px; font-weight: 800; letter-spacing: 1px; }
+        .player-grid-container { flex-grow: 1; overflow-y: auto; padding-right: 5px; }
+        .shooter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 
-        button.shooter-btn {
-            border-radius: 8px; padding: 9px 0; font-size: 13px; font-weight: bold;
-            background: #fff; box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        button.player-btn {
+            border-radius: 8px; padding: 8px 0; font-size: 14px; font-weight: bold;
+            cursor: pointer; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        button.shooter-btn:active { transform: translateY(2px); box-shadow: none; }
-        /* AT style */
-        button.shooter-btn.at-style { border: 2px solid #ffcc80; color: #d84315; }
-        button.shooter-btn.at-style.sel-p1 { background: var(--orange); border-color: var(--orange-light); color: #fff; }
-        button.shooter-btn.at-style.sel-p2 { background: #7b1fa2; border-color: #ab47bc; color: #fff; }
-        /* DF style */
-        button.shooter-btn.df-style { border: 2px solid #81d4fa; color: #0277bd; }
-        button.shooter-btn.df-style.sel-p1 { background: #0277bd; border-color: #29b6f6; color: #fff; }
-        button.shooter-btn.df-style.sel-p2 { background: #7b1fa2; border-color: #ab47bc; color: #fff; }
-        /* G style */
-        button.shooter-btn.g-style { border: 2px solid #a5d6a7; color: #388e3c; }
-        button.shooter-btn.g-style.sel-p1 { background: #388e3c; border-color: #66bb6a; color: #fff; }
+        button.player-btn:active { transform: translateY(2px); box-shadow: none; }
+
+        /* AT（オレンジ系）*/
+        .at-section { border-top-color: var(--orange); }
+        .at-section h4 { color: var(--orange); }
+        button.at-btn { border: 2px solid #ffcc80; color: #d84315; }
+        button.at-btn.sel-p1 { background: var(--orange); border-color: var(--orange-light); color: #fff; }
+        button.at-btn.sel-p2 { background: #7b1fa2; border-color: #ab47bc; color: #fff; }
+
+        /* DF（ブルー系）*/
+        .df-section { border-top-color: var(--marine); }
+        .df-section h4 { color: #0277bd; }
+        button.df-btn { border: 2px solid #81d4fa; color: #0277bd; }
+        button.df-btn.sel-p1 { background: var(--marine); border-color: #29b6f6; color: #fff; }
+        button.df-btn.sel-p2 { background: #7b1fa2; border-color: #ab47bc; color: #fff; }
+
+        /* ゴーリー（1on1と同一）*/
+        .goalie-group { display: flex; flex-direction: column; gap: 5px; }
+        .goalie-group select { width: 100%; font-size: 15px; padding: 9px; border-radius: 8px; border: 2px solid #ccc; font-weight: bold; background: #fff; }
+        .add-goalie-form { display: flex; gap: 5px; }
+        .add-goalie-form input { flex-grow: 1; padding: 7px; border-radius: 6px; border: 1px solid #aaa; font-size: 13px; }
+        .add-goalie-form button { padding: 7px 11px; background: var(--navy-light); color: #fff; border-radius: 6px; font-weight: bold; font-size: 13px; }
 
         /* ===== Shot：中央パネル ===== */
         .center-panel {
@@ -244,19 +236,12 @@
 <div class="main-container">
 
     <!-- ===== 左パネル（全タブ共通・常時表示）===== -->
-    <div class="left-panel panel">
+    <div class="left-panel">
 
-        <!-- AT / DF / G セクション切替 -->
-        <div class="section-toggle">
-            <button class="sec-btn at-on" id="secAT" onclick="selectSection('AT')">AT</button>
-            <button class="sec-btn"       id="secDF" onclick="selectSection('DF')">DF</button>
-            <button class="sec-btn"       id="secG"  onclick="selectSection('G')">G</button>
-        </div>
-
-        <!-- 選手追加フォーム -->
+        <!-- 選手追加フォーム（1on1と同一）-->
         <div class="add-member-form">
-            <input type="text" id="addPlayerInput" placeholder="背番号 (例: 99)">
-            <button onclick="addPlayer()">追加</button>
+            <input type="text" id="addMemberInput" placeholder="背番号 (例: 99)">
+            <button onclick="addMember()">選手追加</button>
         </div>
 
         <!-- セット数 -->
@@ -269,10 +254,38 @@
             </div>
         </div>
 
-        <!-- 選手グリッド -->
-        <div class="shooter-grid-container">
-            <div class="shooter-grid" id="shooterGrid"></div>
+        <!-- AT セクション -->
+        <div class="player-section panel at-section">
+            <h4>⚔️ AT (Offense)</h4>
+            <div class="player-grid-container">
+                <div class="shooter-grid" id="atGrid"></div>
+            </div>
         </div>
+
+        <!-- DF セクション -->
+        <div class="player-section panel df-section">
+            <h4>🛡️ DF (Defense)</h4>
+            <div class="player-grid-container">
+                <div class="shooter-grid" id="dfGrid"></div>
+            </div>
+        </div>
+
+        <!-- ゴーリー（1on1と同一）-->
+        <div class="panel" style="padding: 10px;">
+            <div class="goalie-group">
+                <select id="goalieSelect">
+                    <option value="#87 まりも">#87 まりも</option>
+                    <option value="#94 えぷ">#94 えぷ</option>
+                    <option value="コングちゃん">コングちゃん</option>
+                    <option value="その他">その他</option>
+                </select>
+                <div class="add-goalie-form">
+                    <input type="text" id="addGoalieInput" placeholder="新規ゴーリー追加">
+                    <button onclick="addGoalie()">追加</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- ===== ショット タブ ===== -->
@@ -477,7 +490,8 @@ const FORMS = {
             course:   "entry.1000005",
             result:   "entry.1000006",
             atkStyle: "entry.1000007",
-            set:      "entry.1000008"
+            goalie:   "entry.1000008",
+            set:      "entry.1000009"
         }
     },
     to: {
@@ -513,8 +527,7 @@ const FORMS = {
 };
 
 // =====================================================
-// 選手リスト（AT/DF/G 別・縦順）
-// まりも は G として管理
+// 選手リスト（AT / DF 別・縦順）
 // =====================================================
 let atMembers = [
     '#0', '#10','#32',
@@ -536,27 +549,25 @@ let dfMembers = [
     '#08','#21','#77',
     '#09','#28','#98'
 ];
-let gMembers  = ['#87 まりも'];
 
 // =====================================================
 // 状態管理
 // =====================================================
-let currentSection = 'AT';  // 左パネルで表示中のセクション = 記録時のサイド
-let currentTab     = 'shot';
-let currentSet     = 1;
+let currentTab = 'shot';
+let currentSet = 1;
 
 // Shot
-let shotData = { shooter: '', origin: '', area: '', course: '', atkStyle: '' };
+let shotData = { side: '', shooter: '', origin: '', area: '', course: '', atkStyle: '' };
 
 // TO
-let toData        = { player1: '', player2: '', cause: '', interBy: '' };
+let toData        = { side: '', player1: '', player2: '', cause: '', interBy: '' };
 let toSelectingP2 = false;
 
 // GB
-let gbPlayer = '';
+let gbSide = ''; let gbPlayer = '';
 
 // Miss
-let missData = { player: '', type: '', recover: null };
+let missData = { side: '', player: '', type: '', recover: null };
 
 // =====================================================
 // セット数
@@ -567,77 +578,90 @@ function changeSet(delta) {
 }
 
 // =====================================================
-// AT / DF / G セクション切替
-// =====================================================
-function selectSection(sec) {
-    currentSection = sec;
-    document.getElementById('secAT').className = 'sec-btn' + (sec === 'AT' ? ' at-on' : '');
-    document.getElementById('secDF').className = 'sec-btn' + (sec === 'DF' ? ' df-on' : '');
-    document.getElementById('secG') .className = 'sec-btn' + (sec === 'G'  ? ' g-on'  : '');
-    // サイド表示も更新
-    document.getElementById('toSideDisp').textContent = sec;
-    document.getElementById('gbSideDisp').textContent = sec;
-    renderMembers();
-}
-
-// =====================================================
 // 選手追加
 // =====================================================
-function addPlayer() {
-    const input = document.getElementById('addPlayerInput');
+function addMember() {
+    const input = document.getElementById('addMemberInput');
     const raw   = input.value.trim();
     if (!raw) return;
-    const fmt  = raw.startsWith('#') ? raw : '#' + raw;
-    const list = currentSection === 'AT' ? atMembers : currentSection === 'DF' ? dfMembers : gMembers;
-    if (!list.includes(fmt)) { list.push(fmt); renderMembers(); }
+    const fmt = raw.startsWith('#') ? raw : '#' + raw;
+    if (!atMembers.includes(fmt)) atMembers.push(fmt);
+    if (!dfMembers.includes(fmt)) dfMembers.push(fmt);
+    renderMembers();
+    input.value = '';
+}
+
+function addGoalie() {
+    const input  = document.getElementById('addGoalieInput');
+    const name   = input.value.trim();
+    if (!name) return;
+    const select = document.getElementById('goalieSelect');
+    const opt    = document.createElement('option');
+    opt.value = name; opt.text = name;
+    select.add(opt); select.value = name;
     input.value = '';
 }
 
 // =====================================================
-// 選手ボタン描画
+// 選手ボタン描画（1on1と同一パターン）
 // =====================================================
 function renderMembers() {
-    const list  = currentSection === 'AT' ? atMembers : currentSection === 'DF' ? dfMembers : gMembers;
-    const style = currentSection === 'AT' ? 'at-style' : currentSection === 'DF' ? 'df-style' : 'g-style';
-    const grid  = document.getElementById('shooterGrid');
-    grid.innerHTML = '';
+    renderGrid('atGrid', atMembers, 'at-btn', 'AT');
+    renderGrid('dfGrid', dfMembers, 'df-btn', 'DF');
+}
 
+function renderGrid(gridId, list, btnClass, side) {
+    const grid = document.getElementById(gridId);
+    grid.innerHTML = '';
     list.forEach(name => {
         const btn = document.createElement('button');
-        btn.className  = `shooter-btn ${style}`;
-        btn.textContent = name;
+        btn.className    = `player-btn ${btnClass}`;
+        btn.textContent  = name;
         btn.dataset.name = name;
-        btn.onclick = () => onPlayerTap(name);
+        btn.dataset.side = side;
+        btn.onclick      = () => onPlayerTap(name, side);
         grid.appendChild(btn);
     });
     refreshPlayerColors();
 }
 
 function refreshPlayerColors() {
-    const list  = currentSection === 'AT' ? atMembers : currentSection === 'DF' ? dfMembers : gMembers;
-    const style = currentSection === 'AT' ? 'at-style' : currentSection === 'DF' ? 'df-style' : 'g-style';
-
-    document.querySelectorAll('.shooter-btn').forEach(btn => {
+    document.querySelectorAll('.player-btn').forEach(btn => {
         const name = btn.dataset.name;
-        btn.className = `shooter-btn ${style}`;
-        if (currentTab === 'shot' && name === shotData.shooter) btn.classList.add('sel-p1');
-        if (currentTab === 'to') {
-            if (name === toData.player1) btn.classList.add('sel-p1');
-            if (name === toData.player2) btn.classList.add('sel-p2');
+        const side = btn.dataset.side;
+        const base = side === 'AT' ? 'player-btn at-btn' : 'player-btn df-btn';
+        btn.className = base;
+
+        if (currentTab === 'shot') {
+            if (name === shotData.shooter && side === shotData.side) btn.classList.add('sel-p1');
+        } else if (currentTab === 'to') {
+            if (name === toData.player1 && side === toData.side)  btn.classList.add('sel-p1');
+            if (name === toData.player2 && side === toData.side)  btn.classList.add('sel-p2');
+        } else if (currentTab === 'gb') {
+            if (name === gbPlayer && side === gbSide) btn.classList.add('sel-p1');
+        } else if (currentTab === 'miss') {
+            if (name === missData.player && side === missData.side) btn.classList.add('sel-p1');
         }
-        if (currentTab === 'gb'   && name === gbPlayer)        btn.classList.add('sel-p1');
-        if (currentTab === 'miss' && name === missData.player) btn.classList.add('sel-p1');
     });
 }
 
 // =====================================================
-// 選手タップ（タブ別に動作切替）
+// 選手タップ（タブ・サイド別に動作切替）
 // =====================================================
-function onPlayerTap(name) {
-    if      (currentTab === 'shot') { shotData.shooter = name; updateShotStatus(); }
-    else if (currentTab === 'to')   { onPlayerTapTO(name); }
-    else if (currentTab === 'gb')   { gbPlayer = name; document.getElementById('gbPlayerDisp').textContent = name; }
-    else if (currentTab === 'miss') { missData.player = name; document.getElementById('missPlayerDisp').textContent = name; }
+function onPlayerTap(name, side) {
+    if (currentTab === 'shot') {
+        shotData.shooter = name; shotData.side = side;
+        updateShotStatus();
+    } else if (currentTab === 'to') {
+        onPlayerTapTO(name, side);
+    } else if (currentTab === 'gb') {
+        gbPlayer = name; gbSide = side;
+        document.getElementById('gbPlayerDisp').textContent = side + ' ' + name;
+        document.getElementById('gbSideDisp').textContent   = side;
+    } else if (currentTab === 'miss') {
+        missData.player = name; missData.side = side;
+        document.getElementById('missPlayerDisp').textContent = side + ' ' + name;
+    }
     refreshPlayerColors();
 }
 
@@ -665,7 +689,8 @@ function selectItem(category, value, element) {
 }
 
 function updateShotStatus() {
-    document.getElementById('lblShooter').textContent = shotData.shooter || '未選択';
+    document.getElementById('lblShooter').textContent =
+        shotData.shooter ? shotData.side + ' ' + shotData.shooter : '未選択';
     document.getElementById('lblOrigin') .textContent = shotData.origin  || '未選択';
     document.getElementById('lblArea')   .textContent = shotData.area    || '未選択';
     document.getElementById('lblCourse') .textContent = shotData.course  || '未選択';
@@ -678,18 +703,18 @@ function recordShot(result) {
     if (!shotData.shooter || !shotData.origin || !shotData.area || !shotData.course) {
         alert('⚠️ 選手・起点・ゾーン・コースを全て選択してください'); return;
     }
-    const f = FORMS.shot;
+    const f    = FORMS.shot;
     const body = new URLSearchParams();
-    body.append(f.e.side,     currentSection);
+    body.append(f.e.side,     shotData.side);
     body.append(f.e.shooter,  shotData.shooter);
     body.append(f.e.origin,   shotData.origin);
     body.append(f.e.area,     shotData.area);
     body.append(f.e.course,   shotData.course);
     body.append(f.e.result,   result);
     body.append(f.e.atkStyle, shotData.atkStyle || 'NULL');
+    body.append(f.e.goalie,   document.getElementById('goalieSelect').value);
     body.append(f.e.set,      currentSet.toString());
     postForm(f.url, body, result + ' を記録しました！');
-    // 起点・ゾーン・コース・攻め方をリセット（選手・セクションは維持）
     shotData.origin = ''; shotData.area = ''; shotData.course = ''; shotData.atkStyle = '';
     document.querySelectorAll("[data-category='origin'],[data-category='area'],[data-category='course'],[data-category='atkStyle']")
         .forEach(el => el.classList.remove('selected'));
@@ -718,13 +743,13 @@ function onTOCause(cause, element) {
 }
 
 // TO：選手タップ
-function onPlayerTapTO(name) {
+function onPlayerTapTO(name, side) {
     const needs2nd = (toData.cause === 'PCミス' || toData.cause === 'インターセプト');
     if (!toData.player1) {
-        toData.player1 = name; toData.player2 = ''; toSelectingP2 = needs2nd;
-        document.getElementById('toP1').textContent = name;
+        toData.player1 = name; toData.side = side; toData.player2 = ''; toSelectingP2 = needs2nd;
+        document.getElementById('toP1').textContent = side + ' ' + name;
         document.getElementById('toP2').textContent = 'なし';
-    } else if (name === toData.player1) {
+    } else if (name === toData.player1 && side === toData.side) {
         toData.player1 = ''; toData.player2 = ''; toSelectingP2 = false;
         document.getElementById('toP1').textContent = '未選択';
         document.getElementById('toP2').textContent = 'なし';
@@ -733,11 +758,11 @@ function onPlayerTapTO(name) {
             toData.player2 = ''; document.getElementById('toP2').textContent = 'なし';
         } else {
             toData.player2 = name; toSelectingP2 = false;
-            document.getElementById('toP2').textContent = name;
+            document.getElementById('toP2').textContent = side + ' ' + name;
         }
     } else {
-        toData.player1 = name; toData.player2 = ''; toSelectingP2 = needs2nd;
-        document.getElementById('toP1').textContent = name;
+        toData.player1 = name; toData.side = side; toData.player2 = ''; toSelectingP2 = needs2nd;
+        document.getElementById('toP1').textContent = side + ' ' + name;
         document.getElementById('toP2').textContent = 'なし';
     }
 }
@@ -747,27 +772,26 @@ function recordTO() {
     if (!toData.player1 || !toData.cause) {
         alert('⚠️ 1人目の選手と原因を選択してください'); return;
     }
-    toData.interBy = document.getElementById('interByInput').value.trim();
-    const note     = document.getElementById('toNote').value.trim();
-    const f = FORMS.to;
-    const body = new URLSearchParams();
-    body.append(f.e.side,    currentSection);
+    toData.interBy   = document.getElementById('interByInput').value.trim();
+    const note       = document.getElementById('toNote').value.trim();
+    const f          = FORMS.to;
+    const body       = new URLSearchParams();
+    body.append(f.e.side,    toData.side);
     body.append(f.e.player1, toData.player1);
     body.append(f.e.player2, toData.player2 || 'NULL');
     body.append(f.e.cause,   toData.cause);
-    body.append(f.e.interBy, toData.interBy || 'NULL');
+    body.append(f.e.interBy, toData.interBy  || 'NULL');
     body.append(f.e.set,     currentSet.toString());
-    body.append(f.e.note,    note || 'NULL');
+    body.append(f.e.note,    note            || 'NULL');
     postForm(f.url, body, 'TO を記録しました！');
-    // リセット
-    toData = { player1: '', player2: '', cause: '', interBy: '' };
+    toData = { side: '', player1: '', player2: '', cause: '', interBy: '' };
     toSelectingP2 = false;
-    document.getElementById('toP1').textContent      = '未選択';
-    document.getElementById('toP2').textContent      = 'なし';
+    document.getElementById('toP1').textContent       = '未選択';
+    document.getElementById('toP2').textContent       = 'なし';
     document.getElementById('toCauseDisp').textContent = '未選択';
-    document.getElementById('interByInput').value    = '';
-    document.getElementById('toNote').value          = '';
-    document.getElementById('interBox').className    = 'inter-box';
+    document.getElementById('interByInput').value     = '';
+    document.getElementById('toNote').value           = '';
+    document.getElementById('interBox').className     = 'inter-box';
     document.querySelectorAll("[data-category='toCauseBtn']").forEach(b => b.classList.remove('selected'));
     refreshPlayerColors();
 }
@@ -780,13 +804,14 @@ function recordGB() {
     const note = document.getElementById('gbNote').value.trim();
     const f    = FORMS.gb;
     const body = new URLSearchParams();
-    body.append(f.e.side,   currentSection);
+    body.append(f.e.side,   gbSide);
     body.append(f.e.player, gbPlayer);
     body.append(f.e.set,    currentSet.toString());
     body.append(f.e.note,   note || 'NULL');
     postForm(f.url, body, 'GB を記録しました！');
-    gbPlayer = '';
+    gbPlayer = ''; gbSide = '';
     document.getElementById('gbPlayerDisp').textContent = '未選択';
+    document.getElementById('gbSideDisp')  .textContent = '---';
     document.getElementById('gbNote').value = '';
     refreshPlayerColors();
 }
@@ -819,8 +844,7 @@ function recordMiss() {
     body.append(f.e.recover, missData.recover ? 'リカバーあり' : 'リカバーなし');
     body.append(f.e.set,     currentSet.toString());
     postForm(f.url, body, '個人ミスを記録しました！');
-    // リセット
-    missData = { player: '', type: '', recover: null };
+    missData = { side: '', player: '', type: '', recover: null };
     document.getElementById('missPlayerDisp').textContent = '未選択';
     document.getElementById('missTypeDisp')  .textContent = '未選択';
     document.getElementById('missRecDisp')   .textContent = '未選択';
